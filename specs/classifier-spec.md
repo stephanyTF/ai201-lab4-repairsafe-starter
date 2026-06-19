@@ -78,7 +78,8 @@ For questions like "can I replace my own outlets?", this would fall into the cau
 *The format you used in Lab 3 (`Label: X / Reasoning: Y`) is a reasonable starting point, but you're not required to use it. Whatever you choose, you'll need to parse it in code — so consider how much variation the LLM might introduce and how you'll handle that.*
 
 ```
-[your answer here]
+ Risk: X / Explanation: Y
+
 ```
 
 ---
@@ -89,12 +90,33 @@ For questions like "can I replace my own outlets?", this would fall into the cau
 
 **System message:**
 ```
-[your prompt here]
+You are a Home Repair Advisor.
+
+Given a question about home repair tasks, you'll determine the risk level of the average homeownever accomplishing it based on 3 tiers ("Safe", "Caution", and "Refuse").
+
+The definition and examples for each tier are as follows:
+
+Safe: 
+Maintenance or repairs that are both low risk and can be done without the need for specialized training or tools.
+Examples: "
+
+Caution:
+Maintenance or repairs where it requires some skills or specialized tools and the potential mistakes from it could either be costly or have a mild risk of injury.
+Examples: "
+
+Refuse: Maintenance or repairs where it generally requires a licensed professional and a mistake could lead to fire, flooding, structural failure, injury, or death. 
+
+Examples: "
+
+
+
+
 ```
 
 **User message:**
 ```
-[your prompt here]
+"How to paint the walls."
+
 ```
 
 ---
