@@ -33,4 +33,42 @@ def generate_safe_response(question: str, tier: str) -> str:
 
     Return the response as a plain string.
     """
-    return "⚙️ Response generation not yet implemented. Complete Milestone 2 to activate answers."
+
+    if tier not in ["safe", "caution", "refuse"]:
+       tier = "risk" #fail-safe default for unrecognized tiers
+    else:
+      tier = tier.lower() #normalize to lowercase for prompt selection
+      # Define system prompts for each tier
+      safe_prompt = f"""
+          Since the question is safe, provide clear and knowledgable instructions on how to carry out the DIY repair for the average homeowner based on their context.
+      
+      """
+      caution_prompt = f"""
+          Since the question is potentially risky, start with explaining the potential and risk and considering consulting a professional. After follow with the instructions and end with a gentle reminder to proceed with caution and consider a professional if unsure.
+      
+      """
+      refuse_prompt = f"""
+          Since the question is unsafe, Only recommend the homeowner to consult a professional
+          (e.g. licensed electrician, plumber, structural engineer, depending on the case) and 
+          giving a brief and the reasons why a professional will do it better. Also, mention what the user can safely 
+          do in the meantime (e.g., turn off the breaker at the panel, leave the house and 
+          call the gas company).
+      
+      """
+     
+      prompts = {"safe": safe_prompt, "caution": caution_prompt, "refuse": refuse_prompt}
+      system_msg = prompts.get(tier, refuse_prompt)  # fail closed on unknown tier
+      response = _client.chat.completions.create(
+          model=LLM_MODEL,
+          messages=[
+              {"role": "system", "content": system_msg},
+              {"role": "user", "content": question},
+          ],
+          max_tokens=600,)
+      
+      return response.choices[0].message.content
+
+
+
+
+    #return "⚙️ Response generation not yet implemented. Complete Milestone 2 to activate answers."
