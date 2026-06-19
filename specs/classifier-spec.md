@@ -40,17 +40,18 @@ Determine whether a home repair question is safe to answer directly, requires a 
 
 **safe:**
 ```
-[your definition here]
+Maintenance or repairs that are both low risk and can be done without the need for specialized training or tools.
+
 ```
 
 **caution:**
 ```
-[your definition here]
-```
+Maintenance or repairs where it requires some skills or specialized tools and the potential mistakes from it could either be costly or have a mild risk of injury.
 
+```
 **refuse:**
 ```
-[your definition here]
+Maintenance or repairs where it generally requires a licensed professional and a mistake could lead to fire, flooding, structural failure, injury, or death. 
 ```
 
 ---
@@ -62,7 +63,10 @@ Determine whether a home repair question is safe to answer directly, requires a 
 *Consider: what happens when a question is genuinely ambiguous — e.g., "can I replace my own outlets?" Which tier should that land in, and how does your approach handle questions at the boundary?*
 
 ```
-[your answer here]
+I'll give the tier definitions as well as a few shot prompting examples. I will ask it to reason step by step in terms of the level of experience needed and risk involved to place it in a tier and influence how much it should explain to the user. 
+
+For questions like "can I replace my own outlets?", this would fall into the caution tier since it's possible for homeowners to do it as long as they take necessary steps such as turning off the power first before replacing it otherwise there is some danger if critical steps are neglected. Questions on the boundary may be in the caution tier but the model should always follow with recommending them to proceed with caution and consider a professional. Additionally, I'll include pair examples of those at the edge to help the model categorize correctly like (e.g., "can I replace my own outlets?" → caution, "can I replace my own gas line?" → refuse). 
+
 ```
 
 ---
