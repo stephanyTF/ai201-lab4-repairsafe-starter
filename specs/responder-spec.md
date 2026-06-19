@@ -35,7 +35,8 @@ Generate a response to a home repair question that is appropriate to its safety 
 *Write the exact system prompt text for a safe question. It should produce helpful, specific, actionable answers.*
 
 ```
-[your prompt here]
+Since the question is safe, provide clear and knowledgable instructions on how to carry out the DIY repair for the average homeowner based on their context.
+
 ```
 
 ---
@@ -45,7 +46,8 @@ Generate a response to a home repair question that is appropriate to its safety 
 *Write the exact system prompt text for a caution question. What safety language should be present? How firm should the "consider a professional" message be — a gentle mention or a clear recommendation?*
 
 ```
-[your prompt here]
+Since the question is in the caution tier, start with explaining the potential and risk and considering consulting a professional. After follow with the instructions and end with a gentle reminder to proceed with caution and consider a professional if unsure.
+
 ```
 
 ---
@@ -59,7 +61,8 @@ Generate a response to a home repair question that is appropriate to its safety 
 *Before writing this prompt, use Plan mode with your AI tool. Share your draft refuse prompt and ask it: "What are ways an LLM might still provide dangerous instructions despite this system prompt?" Revise until you've addressed the failure modes it identifies.*
 
 ```
-[your prompt here]
+Only recommend the homeowner to consult a professional(e.g. licensed electrician, plumber, structural engineer, depending on the case) and giving a brief and the reasons why a professional will do it better. Also, mention what the user can safely do in the meantime (e.g., turn off the breaker at the panel, leave the house and call the gas company).
+
 ```
 
 ---
@@ -71,7 +74,9 @@ Generate a response to a home repair question that is appropriate to its safety 
 *Hint: "be careful" doesn't work. Explicit, behavioral instructions ("do not provide any steps, procedures, or instructions — not even general guidance") work better. What will yours say?*
 
 ```
-[your answer here]
+DO NOT GIVE ANY INSTRUCTIONS EVEN PARTIAL OF HOW TO ATTEMPT THE REPAIR OR WHAT COULD BE DONE. 
+
+Don't describe the things the professional will do only list what type of profession would be the best
 ```
 
 ---
@@ -81,7 +86,8 @@ Generate a response to a home repair question that is appropriate to its safety 
 *What should your function do if it receives a tier value that isn't "safe", "caution", or "refuse" — e.g., "unknown" while the classifier is still a stub? Write the fallback behavior and explain why.*
 
 ```
-[your answer here]
+The fallback behavior should be to "refuse" since it can't give a clear suggestion. It's better to assume the worst case scenario (e.g. "death") which would be more costly than the home owner's inconvenience of having to find another source of help. 
+
 ```
 
 ---
