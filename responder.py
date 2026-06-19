@@ -49,9 +49,8 @@ def generate_safe_response(question: str, tier: str) -> str:
       """
       refuse_prompt = f"""
           Since the question is unsafe, Only recommend the homeowner to consult a professional
-          (e.g. licensed electrician, plumber, structural engineer, depending on the case) and 
-          giving a brief and the reasons why a professional will do it better. Also, mention what the user can safely 
-          do in the meantime (e.g., turn off the breaker at the panel, leave the house and 
+          (e.g. licensed electrician, plumber, structural engineer, depending on the case). 
+          Also, mention what the user can safely do in the meantime (e.g., turn off the breaker at the panel, leave the house and 
           call the gas company).
       
       """

@@ -99,11 +99,12 @@ The fallback behavior should be to "refuse" since it can't give a clear suggesti
 **A "refuse" response that was still too helpful and what you changed to fix it:**
 
 ```
-[your answer here]
+Most of the responses to the refuse labeled questions did pretty well in guarding against sharing leaking instructions to the homeowner but in the reasons why a professional could do it better, there are some vauge focus areas that the homeowner could pick up on and try to attempt themselves. The change I made was to remove the addition of describing why a professional is a better fit for the job to prevent any leaks on repair actions. 
+
 ```
 
 **The tier where the LLM's default behavior was closest to what you wanted (and which tier required the most prompt iteration):**
 
 ```
-[your answer here]
+Safe tier performance was the closest to my expectation while Refuse tier needed slight prompt iteration since it still leaked on how the homeowner could resolve the issue a little. 
 ```
