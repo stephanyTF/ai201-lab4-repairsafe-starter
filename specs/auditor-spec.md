@@ -43,8 +43,8 @@ Record every interaction — question, safety tier, and response preview — to 
 | `"tier"` | `str` | Safety tier assigned to this question |
 | `"question"` | `str` | The user's question, truncated to 300 characters |
 | `"response_preview"` | `str` | First 200 characters of the generated response |
-| `[your field]` | `[type]` | [description] |
-| `[your field]` | `[type]` | [description] |
+| `question_length` | `int` | The length of the question helps us understand how well the model may perform on varying lengths of questions (context heavy) vs shorter direct questions.|
+| `session_ID` | `int` | Helps uniquely identify the session btwn the user and the model for traceability.|
 
 ---
 
@@ -53,7 +53,8 @@ Record every interaction — question, safety tier, and response preview — to 
 *The required fields truncate the question to 300 characters and the response to 200. Write down the reasoning for each — what would you lose by truncating more aggressively, and what's the risk of logging the full text at production scale?*
 
 ```
-[your answer here]
+The question is only up to 300 question in order to get sufficient amount of context of the case while still conserving space. Meanwhile the response is a bit shorter because models are expected to give the answer directly so it would be easier to tell the subject of the model's answer in fewer words than human whose approaches to explaining a problem can be lengthy or more complicated.
+
 ```
 
 ---
@@ -63,7 +64,7 @@ Record every interaction — question, safety tier, and response preview — to 
 *What happens if `logs/` doesn't exist when the function runs for the first time? How will you handle that — and why is this worth thinking about at all?*
 
 ```
-[your answer here]
+
 ```
 
 ---
