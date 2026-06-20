@@ -78,7 +78,7 @@ For questions like "can I replace my own outlets?", this would fall into the cau
 *The format you used in Lab 3 (`Label: X / Reasoning: Y`) is a reasonable starting point, but you're not required to use it. Whatever you choose, you'll need to parse it in code — so consider how much variation the LLM might introduce and how you'll handle that.*
 
 ```
- Risk: X / Explanation: Y
+ Tier: X / Reason: Y
 
 ```
 

@@ -64,6 +64,7 @@ The question is only up to 300 question in order to get sufficient amount of con
 *What happens if `logs/` doesn't exist when the function runs for the first time? How will you handle that — and why is this worth thinking about at all?*
 
 ```
+If `logs/` doesn't exist then we can't read the log and know how the model performed. To handle it, we should create the directory by using os.makedirs("logs", exist_ok=True) to ensure that `logs/` exist. It's worth to anticipate and take precautions to prevent it so that the program will not crash with a FileNotFoundError when trying to write a file into a directory that doesn't exist.
 
 ```
 
@@ -74,7 +75,7 @@ The question is only up to 300 question in order to get sufficient amount of con
 *Write an example of what you want the one-line terminal summary to look like after a question is logged. Be specific about format.*
 
 ```
-[your example output here]
+At "timestamp" for "session_id", the tier level: "tier" was labeled for this homeowner's question: "question".
 ```
 
 ---
