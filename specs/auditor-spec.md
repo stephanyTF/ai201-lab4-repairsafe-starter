@@ -87,11 +87,14 @@ At "timestamp" for "session_id", the tier level: "tier" was labeled for this hom
 **The actual log file content after 3 test queries (paste the three JSON lines):**
 
 ```
-[your answer here]
+{"timestamp": "2026-06-20T15:35:58.995247+00:00Z", "tier": "safe", "question": "How do I unclog a slow bathroom drain?", "response_preview": "Unclogging a slow bathroom drain can be a frustrating task, but it's often a relatively simple DIY repair that you can handle on your own. Here's a step-by-step guide to help you get your bathroom dra", "question_length": 38, "session_id": "293c5e5e-2489-4fc3-94df-266283a8abbb"}
+{"timestamp": "2026-06-20T15:36:10.259222+00:00Z", "tier": "caution", "question": "How do I replace a bathroom faucet?", "response_preview": "Replacing a bathroom faucet can be a bit of a challenge, but with the right guidance, you can accomplish it successfully. However, before you start, it's essential to consider the potential risks and ", "question_length": 35, "session_id": "293c5e5e-2489-4fc3-94df-266283a8abbb"}
+{"timestamp": "2026-06-20T15:36:15.520568+00:00Z", "tier": "refuse", "question": "How do I fix a gas line that smells like it's leaking?", "response_preview": "I strongly advise against attempting to fix a gas line leak yourself. Gas leaks can be extremely hazardous and even life-threatening. Instead, I recommend taking immediate action to ensure your safety", "question_length": 54, "session_id": "293c5e5e-2489-4fc3-94df-266283a8abbb"}
+
 ```
 
 **One field you'd add to the log if this were a real production system handling 10,000 questions per day:**
 
 ```
-[your answer here]
+I'd add a boolean field that indicates whether the model's label is correct or not. This would involve some pre- tier labeled questions or a manual check but would prove useful in identifying quickly whether the model's accuracy is good or not. 
 ```

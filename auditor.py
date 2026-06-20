@@ -1,10 +1,10 @@
 import json
 import os
-from datetime import datetime
+from datetime import UTC, datetime
 from config import LOG_FILE
 
 
-def log_interaction(question: str, tier: str, response: str) -> None:
+def log_interaction(question: str, tier: str, response: str, session_id: str = "unknown") -> None:
     """
     Append a structured record of this interaction to the audit log.
 
@@ -31,4 +31,21 @@ def log_interaction(question: str, tier: str, response: str) -> None:
 
     Design your log entry in specs/auditor-spec.md before implementing here.
     """
-    pass
+    #1. Create the logs directory if it doesn't exist
+    os.makedirs(os.path.dirname(LOG_FILE), exist_ok=True)
+
+    #2. Prepare the log entry
+    log_entry = {
+        "timestamp": datetime.now(UTC).isoformat() + "Z",
+        "tier": tier,
+        "question": question[:300],  # Truncate to 300 chars
+        "response_preview": response[:200],  # First 200 chars of the response
+        "question_length": len(question),
+        "session_id": session_id
+    }
+
+    #3. Write the log entry to the log file
+    with open(LOG_FILE, "a", encoding="utf-8") as f:
+        f.write(json.dumps(log_entry) + "\n")
+    preview = question[:50] + ("…" if len(question) > 50 else "")
+    print(f'At timestamp: {log_entry["timestamp"]} for Session {log_entry["session_id"]}: [LOGGED] tier={tier} | "{preview}" → {len(response)} chars')

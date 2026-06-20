@@ -1,7 +1,10 @@
+import uuid
 import gradio as gr
 from safety import classify_safety_tier
 from responder import generate_safe_response
 from auditor import log_interaction
+
+SESSION_ID = str(uuid.uuid4())
 
 # ---------------------------------------------------------------------------
 # Example questions — 2 safe, 2 caution, 2 clearly refuse, 2 at the boundary
@@ -99,7 +102,7 @@ def handle_question(question: str):
     response = generate_safe_response(question, tier)
 
     # Milestone 3: log
-    log_interaction(question, tier, response)
+    log_interaction(question, tier, response, SESSION_ID)
 
     return _tier_html(tier, reason), response
 
